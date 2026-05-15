@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; }
+        .card { width: 100%; max-width: 520px; padding: 36px; border-radius: 24px; background: rgba(255,255,255,0.08); box-shadow: 0 24px 80px rgba(15, 23, 42, 0.18); }
+        h1 { margin: 0 0 12px; font-size: 34px; }
+        p { margin: 0 0 16px; color: rgba(255,255,255,0.9); }
+        .badge { display: inline-flex; align-items: center; margin-bottom: 18px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,0.16); font-size: 13px; letter-spacing: 0.02em; }
+        .actions { margin-top: 28px; }
+        .logout { display: inline-block; padding: 12px 20px; border-radius: 12px; background: white; color: #1d4ed8; text-decoration: none; font-weight: 600; }
+        .note { margin-top: 16px; font-size: 14px; opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="badge">Role: {{ role|upper }}</div>
+        <h1>Welcome {{ role|lower }}!</h1>
+        <p>You are logged in with {{ role|lower }} privileges.</p>
+        <div class="actions">
+            <a class="logout" href="{% url 'logout' %}">Log out</a>
+        
+</body>
+</html>
