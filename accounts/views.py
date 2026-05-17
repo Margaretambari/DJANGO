@@ -2,7 +2,20 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
+class SecretDataView(APIView):
+    permission_classes = [IsAuthenticated] 
+
+    def get(self, request):
+        current_user = request.user.username
+        
+        return Response({
+            "message": f"Hello {current_user}, you successfully authenticated with a JWT!"
+        })
+    
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
