@@ -6,6 +6,9 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 from .views import SecretDataView 
+from .views import hello_api
+
+
 
 urlpatterns = [
     path('', views.login_view, name='login'),
@@ -17,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.dirname if hasattr(admin.site, 'dirname') else admin.site.urls),
     path('api/auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/data/', hello_api, name='hello_api'),
+
 ]

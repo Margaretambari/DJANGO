@@ -5,6 +5,11 @@ from django.contrib.auth.decorators import login_required
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from django.http import JsonResponse
+
+def hello_api(request):
+    return JsonResponse({"message": "Hello from your Django backend!"})
+
 
 class SecretDataView(APIView):
     permission_classes = [IsAuthenticated] 
@@ -15,6 +20,7 @@ class SecretDataView(APIView):
         return Response({
             "message": f"Hello {current_user}, you successfully authenticated with a JWT!"
         })
+    
     
 def login_view(request):
     if request.method == 'POST':
